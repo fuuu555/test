@@ -108,15 +108,21 @@ document.querySelectorAll('#guest-login').forEach(function (btn) {
     });
 });
 
-document.querySelectorAll('#logout-button').forEach(function (btn) {
+document.querySelectorAll('#guest-login').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
         e.preventDefault();
-        fetch('/aonix/jsp/logout.jsp')
+        fetch('/aonix/jsp/guest_login.jsp')
             .then(resp => resp.text())
             .then(result => {
                 if (result.trim() === 'success') {
-                    window.location.href = '/aonix/pages/login.html';
+                    window.location.href = '/aonix/pages/member.html';
+                } else {
+                    alert('訪客登入失敗，請重試！');
                 }
+            })
+            .catch(error => {
+                console.error('訪客登入錯誤:', error);
+                alert('訪客登入請求失敗！');
             });
     });
 });
