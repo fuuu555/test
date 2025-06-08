@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-        try {
+       
             const response = await fetch('/aonix/jsp/get_profile.jsp');
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const user = await response.json();
@@ -178,10 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
             attachEditSaveFunctionality("displayName", displayNameInput);
             attachEditSaveFunctionality("photoURL", photoURLInput);
             attachEditSaveFunctionality("email", emailInput);
-        } catch (error) {
-            console.error("Error loading profile:", error);
-            contentArea.innerHTML += '<div class="error">Error loading profile</div>';
-        }
+       
+            
     }
 
     function attachEditSaveFunctionality(field, inputElement) {
